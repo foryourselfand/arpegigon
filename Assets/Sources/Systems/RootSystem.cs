@@ -6,5 +6,6 @@ public sealed class RootSystem : Feature
 	{
 		Add(new InitializeHexagonGridSystem(contexts));
 		Add(new AddHexagonViewSystem(contexts));
+		Add(new CheckClickInputSystem(contexts));
 	}
 }

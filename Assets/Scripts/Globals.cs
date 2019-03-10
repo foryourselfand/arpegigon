@@ -5,4 +5,13 @@ using UnityEngine;
 public class Globals : ScriptableObject
 {
 	public GameObject hexagonPrefab;
+
+	public float widthSpacing;
+	public float heightSpacing;
+	public float heightOffSet;
+
+	public Color evenColor;
+	public Color oddColor;
+
+	public float clickRadius = 30f;
 }
