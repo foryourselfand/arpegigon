@@ -1,11 +1,11 @@
 public struct IntVector2
 {
-	public int X;
-	public int Y;
+	public int x;
+	public int y;
 
 	public IntVector2(int x, int y)
 	{
-		X = x;
-		Y = y;
+		this.x = x;
+		this.y = y;
 	}
 }

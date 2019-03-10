@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+	public Globals globals;
+	public RectTransform uiRoot;
+
 	private RootSystem _systems;
 
 	private void Start()
 	{
-		_systems = new RootSystem(Contexts.sharedInstance);
+		var contexts = Contexts.sharedInstance;
+
+		contexts.game.SetGlobals(globals);
+		contexts.game.SetUiRoot(uiRoot );
+
+		_systems = new RootSystem(contexts);
 
 		_systems.Initialize();
 	}

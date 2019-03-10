@@ -12,13 +12,14 @@ public class InitializeHexagonGridSystem : IInitializeSystem
 
 	public void Initialize()
 	{
-		for (int i = 0; i < 6; i++)
+		for (var i = 0; i < 6; i++)
 		{
-			for (int j = 0; j < 14; j++)
+			for (var j = 0; j < 14; j++)
 			{
 				var e = _contexts.game.CreateEntity();
 
 				e.AddPosition(new IntVector2(j, i));
+				e.isHexagon = true;
 			}
 		}
 	}
