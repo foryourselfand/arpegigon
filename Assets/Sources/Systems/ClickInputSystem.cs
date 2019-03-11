@@ -2,12 +2,12 @@ using System.Linq;
 using Entitas;
 using UnityEngine;
 
-public class CheckClickInputSystem : IExecuteSystem
+public class ClickInputSystem : IExecuteSystem
 {
 	private Contexts _contexts;
 	private IGroup<GameEntity> _entities;
 
-	public CheckClickInputSystem(Contexts contexts)
+	public ClickInputSystem(Contexts contexts)
 	{
 		_contexts = contexts;
 		_entities = contexts.game.GetGroup(
@@ -25,6 +25,11 @@ public class CheckClickInputSystem : IExecuteSystem
 				x => (x.view.value.transform.position - mousePosition).magnitude <
 				     _contexts.game.globals.value.clickRadius);
 
-		Debug.Log(clickedHex);
+		if (clickedHex != null)
+		{
+			var e = _contexts.game.CreateEntity();
+			e.isClickInput = true;
+			e.AddPosition(clickedHex.position.value);
+		}
 	}
 }

@@ -34,9 +34,9 @@ public class AddHexagonViewSystem : ReactiveSystem<GameEntity>
 			var rectTransform = (RectTransform) hexagon.transform;
 			entity.AddView(hexagon);
 
-			var position = new Vector2(entity.position.x * globals.widthSpacing,
-				entity.position.y * globals.heightSpacing);
-			var isEven = entity.position.x % 2 == 0;
+			var position = new Vector2(entity.position.value.x * globals.widthSpacing,
+				entity.position.value.y * globals.heightSpacing);
+			var isEven = entity.position.value.x % 2 == 0;
 			var image = hexagon.GetComponent<Image>();
 
 			if (isEven)
