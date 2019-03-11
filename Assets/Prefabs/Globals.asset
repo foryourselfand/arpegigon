@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08713f6a67b64beeaee21c1fdca2145a, type: 3}
   m_Name: Globals
   m_EditorClassIdentifier: 
-  hexagon: {fileID: 0}
+  hexagonPrefab: {fileID: 5443846875562325048, guid: 03244d37cf4fb4cbfbc4c776c6896969,
+    type: 3}
+  widthSpacing: 52
+  heightSpacing: 60
+  heightOffSet: -26
+  evenColor: {r: 1, g: 1, b: 1, a: 1}
+  oddColor: {r: 0.05882353, g: 0.5019608, b: 1, a: 1}
+  clickRadius: 30

@@ -20,6 +20,7 @@ public class InitializeHexagonGridSystem : IInitializeSystem
 
 				e.AddPosition(j, i);
 				e.isHexagon = true;
+				e.AddHexagonType(HexagonType.Empty);
 			}
 		}
 	}
