@@ -14,4 +14,6 @@ public class Globals : ScriptableObject
 	public Color oddColor;
 
 	public float clickRadius = 30f;
+
+	public float tickInterval = 1f;
 }

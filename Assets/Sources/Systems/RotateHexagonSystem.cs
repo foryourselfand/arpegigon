@@ -40,7 +40,8 @@ public class RotateHexagonSystem : ReactiveSystem<GameEntity>
 				hexagon.ReplaceHexagonRotation(newRotation);
 			}
 
-			entity.Destroy();
+
+			entity.isDestroyed = true; 
 		}
 	}
 }

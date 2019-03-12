@@ -38,7 +38,7 @@ public class ChangeHexagonTypeSystem : ReactiveSystem<GameEntity>
 				hexagon.ReplaceHexagonType((HexagonType) newType);
 			}
 
-			e.Destroy();
+			e.isDestroyed = true;
 		}
 	}
 }
