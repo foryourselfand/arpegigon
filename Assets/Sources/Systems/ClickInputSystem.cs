@@ -16,20 +16,24 @@ public class ClickInputSystem : IExecuteSystem
 
 	public void Execute()
 	{
-		if (!Input.GetMouseButtonDown(0)) return;
-		var hexes = _entities.GetEntities();
-		var mousePosition = Input.mousePosition;
-
-		var clickedHex = hexes.OrderBy(x => (x.view.value.transform.position - mousePosition).sqrMagnitude)
-			.FirstOrDefault(
-				x => (x.view.value.transform.position - mousePosition).magnitude <
-				     _contexts.game.globals.value.clickRadius);
-
-		if (clickedHex != null)
+		for (var i = 0; i < 2; i++)
 		{
-			var e = _contexts.game.CreateEntity();
-			e.isClickInput = true;
-			e.AddPosition(clickedHex.position.value);
+			if (Input.GetMouseButtonDown(i))
+			{
+				var hexes = _entities.GetEntities();
+				var mousePosition = Input.mousePosition;
+
+				var clickedHex = hexes.OrderBy(x => (x.view.value.transform.position - mousePosition).sqrMagnitude)
+					.FirstOrDefault(
+						x => (x.view.value.transform.position - mousePosition).magnitude <
+						     _contexts.game.globals.value.clickRadius);
+
+				if (clickedHex == null) continue;
+				var e = _contexts.game.CreateEntity();
+				e.isClickInput = true;
+				e.AddPosition(clickedHex.position.value);
+				e.AddButtonNumber(i);
+			}
 		}
 	}
 }

@@ -9,5 +9,7 @@ public sealed class RootSystem : Feature
 		Add(new ClickInputSystem(contexts));
 		Add(new DisplayHexagonTypeSystem(contexts));
 		Add(new ChangeHexagonTypeSystem(contexts));
+		Add(new RotateHexagonSystem(contexts));
+		Add(new RotateHaxagonViewSystem(contexts));
 	}
 }

@@ -12,12 +12,16 @@ public class ChangeHexagonTypeSystem : ReactiveSystem<GameEntity>
 
 	protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
 	{
-		return context.CreateCollector(GameMatcher.ClickInput);
+		return context.CreateCollector(GameMatcher.AllOf(
+			GameMatcher.ClickInput,
+			GameMatcher.Position,
+			GameMatcher.ButtonNumber));
 	}
 
 	protected override bool Filter(GameEntity entity)
 	{
-		return entity.isClickInput && entity.hasPosition;
+		return entity.isClickInput && entity.hasPosition &&
+		       entity.hasButtonNumber && entity.buttonNumber.value == 0;
 	}
 
 	protected override void Execute(List<GameEntity> entities)
@@ -27,16 +31,13 @@ public class ChangeHexagonTypeSystem : ReactiveSystem<GameEntity>
 			var hexagons = _contexts.game.GetEntitiesWithPosition(e.position.value);
 			foreach (var hexagon in hexagons)
 			{
-				if (hexagon.hasHexagonType)
-				{
-					var newType = (int) hexagon.hexagonType.value;
-					newType++;
-					newType %= 5;
-					hexagon.ReplaceHexagonType((HexagonType) newType);
-				}
+				if (!hexagon.hasHexagonType) continue;
+				var newType = (int) hexagon.hexagonType.value;
+				newType++;
+				newType %= 5;
+				hexagon.ReplaceHexagonType((HexagonType) newType);
 			}
 
-//			_contexts.game.DestroyEntity(e);
 			e.Destroy();
 		}
 	}

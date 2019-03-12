@@ -21,6 +21,7 @@ public class InitializeHexagonGridSystem : IInitializeSystem
 				e.AddPosition(new IntVector2(j, i));
 				e.isHexagon = true;
 				e.AddHexagonType(HexagonType.Empty);
+				e.AddHexagonRotation(0);
 			}
 		}
 	}
